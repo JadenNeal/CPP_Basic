@@ -51,5 +51,44 @@ char bird[11] = "Mr. Cheeps";
 char fish[] = "Bubbles";  // 编译器自动计算
 ```
 
+### 指针
+
+指针是一个变量，存储的是值的地址。
+
+一定要在对指针使用`*`之前，将指针初始化为一个确定的、适当的地址。
+
+为一个数据对象（结构或者基本类型）获得并指定分配内存的通用格式如下：
+
+```cpp
+typeName* pointer_name = new typeName;
+```
+
+#### 使用delete释放内存
+
+`new`和`delete`是配对的，否则将发生内存泄漏（memory leak）
+
+```cpp
+int* ps = new int;
+delete ps;  // ok
+delete ps;  // not ok, cannot delete twice
+
+int judge = 5;
+int* pt = &judge;
+delete pt;  // not allowed delete pt from variable.
+```
+
+使用new和delete时，应遵循以下规则：
+
+- 不要使用delete来释放不是new分配的内存；
+- 不要使用delete释放同一个内存块两次；
+- 使用`new []`为数组分配内存，应使用`delete []`来释放；
+- 使用new为一个实体分配内存，应使用`delete`（没有方括号）来释放
+- 对空指针使用delete是安全的
+
+为数组分配内存的通用格式如下：
+
+```cpp
+typeName* pointer_name = new type_name [num_elements];
+```
 
 
